@@ -12,6 +12,8 @@ from colorama import Fore, Back, Style
 init()
 
 words = []
+alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alphabets = [letter for letter in alphabets]
 
 with open("words.txt", "r") as f:
     for line in f.readlines():
@@ -34,6 +36,10 @@ def check_word(guess, word):
         for index in range(len(word)):
             if guess[index] not in word[index]:
                 color = Fore.WHITE
+                try:
+                    alphabets.remove(guess[index])
+                except:
+                    pass
             if guess[index] in word:
                 color = Fore.YELLOW
             if word[index] == guess[index]:
@@ -42,16 +48,22 @@ def check_word(guess, word):
             print(color, f"{guess[index]}", end='')
 
         print(Style.RESET_ALL)
+        print(alphabets)
         print()
 
 
-while current_chance < total_chances:
-    guessed_word = guessed_word = input().strip().upper()
-    while guessed_word not in words:
-        print("Invalid\n")
-        guessed_word = input().strip().upper()
+def main():
+    global current_chance, total_chances, guessed_crct
+    while current_chance < total_chances:
+        guessed_word = guessed_word = input().strip().upper()
+        while guessed_word not in words:
+            print("Invalid\n")
+            guessed_word = input().strip().upper()
 
-    check_word(guessed_word, chosen_word)
-    current_chance += 1
+        check_word(guessed_word, chosen_word)
+        current_chance += 1
 
-print(chosen_word)
+    print(chosen_word)
+
+if __name__ == "__main__":
+    main()
