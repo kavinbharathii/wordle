@@ -1706,6 +1706,7 @@ hover
 human
 humor
 hurts
+hymns
 icons
 ideal
 ideas
@@ -1894,6 +1895,7 @@ noted
 notes
 novel
 nurse
+nymph
 nylon
 oasis
 occur
@@ -2193,6 +2195,7 @@ soils
 solar
 solid
 solve
+sonar
 songs
 sonic
 sorry
