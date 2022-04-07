@@ -15,7 +15,7 @@ words = []
 alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabets = [letter for letter in alphabets]
 
-with open("C:/Users/Kavin/jarvis/wordle/words.txt", "r") as f:
+with open("[path to words.txt]", "r") as f:
     for line in f.readlines():
         words.append(line.strip().upper())
 
