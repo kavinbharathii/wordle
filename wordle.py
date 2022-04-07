@@ -41,7 +41,7 @@ def check_word(guess, word):
                 except:
                     pass
             if guess[index] in word:
-                color = Fore.YELLOW
+                color = Fore.RED
             if word[index] == guess[index]:
                 color = Fore.GREEN
 
