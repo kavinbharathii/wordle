@@ -15,10 +15,11 @@ words = []
 alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabets = [letter for letter in alphabets]
 
-with open("words.txt", "r") as f:
+with open("C:/Users/Kavin/jarvis/wordle/words.txt", "r") as f:
     for line in f.readlines():
         words.append(line.strip().upper())
 
+print("Welcome to wordle, guess a 5 letter word")
 chosen_word = str(choice(words))
 current_chance = 0
 total_chances = 6
