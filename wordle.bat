@@ -1,3 +1,3 @@
 @echo off
 
-python -u "C:/Users/Kavin/jarvis/wordle/main.py"
+python -u "[path to main.py]"
