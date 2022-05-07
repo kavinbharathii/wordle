@@ -1,7 +1,6 @@
 
 # -------------------------------- required packages ------------------------------------ #
 from random import choice
-from xml.dom import NotFoundErr
 from colorama import init
 from colorama import Fore, Style
 import json
