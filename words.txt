@@ -1725,6 +1725,7 @@ items
 jeans
 jelly
 jewel
+jiffy
 joins
 joint
 jokes
