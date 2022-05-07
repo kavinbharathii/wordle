@@ -27,3 +27,4 @@ $ wordle
 
 ## Community
 Requests from the community to add legible 5-letter words which are NOT already present in "words.txt" file, are always welcome. 
+
