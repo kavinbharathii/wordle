@@ -6,11 +6,9 @@ It also has built-in statistics so you can track your progress.
 You can install the application in the following ways.
   ### git:
   You can clone the whole repository,
-    
     ```
     git clone https://github.com/cipherDOT/wordle
     ```
-    
   ### Download code
   You can also download the .zip file from the github repo.
   
