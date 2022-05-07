@@ -16,11 +16,11 @@ guessed_crct = False
 
 # --------------------------------- file handling -------------------------------------- #
 
-with open("[path to words.txt]", "r") as f:
+with open("C:/Users/Kavin/jarvis/wordle/words.txt", "r") as f:
     for line in f.readlines():
         words.append(line.strip().upper())
 
-with open("[path to stats.json]", "r") as json_file:
+with open("C:/Users/Kavin/jarvis/wordle/stats.json", "r") as json_file:
     data = json.load(json_file)
     json_file.close()
 
@@ -45,7 +45,7 @@ def check_word(guess, word):
         print("[NOICE]\n")
         guessed_crct = True
         data[str(current_chance)] += 1
-        with open("[path to stats.json]", "w") as json_file:
+        with open("C:/Users/Kavin/jarvis/wordle/stats.json", "w") as json_file:
             json.dump(data, json_file)
             json_file.close()
         display_stats(data)
@@ -73,6 +73,7 @@ def check_word(guess, word):
 # ------------------------------- main game func -------------------------------------- #
 
 def main():
+    print("Welcome to wordle, guess a 5 letter word")
     global current_chance, total_chances, guessed_crct
     while current_chance < total_chances:
         guessed_word = input().strip().upper()
@@ -89,5 +90,6 @@ def main():
 # ---------------------------- initializing the game ----------------------------------- #
 
 if __name__ == "__main__":
-    print("Welcome to wordle, guess a 5 letter word")
     main()
+
+# ------------------------------------------------------------------------------------- #
