@@ -53,11 +53,11 @@ def check_word(guess, word):
 
     else:
         for index in range(len(word)):
-            if guess[index] not in word[index]:
+            if guess[index] not in word:
                 color = Fore.WHITE
                 try:
                     alphabets.remove(guess[index])
-                except:
+                except ValueError:
                     pass
             if guess[index] in word:
                 color = Fore.RED
@@ -67,7 +67,7 @@ def check_word(guess, word):
             print(color, f"{guess[index]}", end='')
 
         print(Style.RESET_ALL)
-        print(alphabets)
+        print(f"[{' '.join(alphabets)}]")
         print()
 
 # ------------------------------- main game func -------------------------------------- #
