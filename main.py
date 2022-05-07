@@ -1,6 +1,7 @@
 
 # -------------------------------- required packages ------------------------------------ #
 from random import choice
+from xml.dom import NotFoundErr
 from colorama import init
 from colorama import Fore, Style
 import json
@@ -33,7 +34,10 @@ chosen_word = str(choice(words))
 def display_stats(data_):
     print(Fore.CYAN, '---------- [STATS] ----------')
     for key, value in data_.items():
-        print(Fore.CYAN, f"attempt {int(key) + 1} : {'/' * value}")
+        if key.isnumeric():
+            print(Fore.CYAN, f"attempt {int(key) + 1}      : {'/' * value}")
+        else:
+            print(Fore.CYAN, f"{key}{' ' * (14 - len(key))} : {value}")
 
 # ------------------------------ compare two words ------------------------------------ #
 
@@ -45,6 +49,8 @@ def check_word(guess, word):
         print("[NOICE]\n")
         guessed_crct = True
         data[str(current_chance)] += 1
+        data['current_streak'] += 1
+        data['max_streak'] = max(data['current_streak'], data['max_streak'])
         with open("C:/Users/Kavin/jarvis/wordle/stats.json", "w") as json_file:
             json.dump(data, json_file)
             json_file.close()
@@ -78,7 +84,8 @@ def main():
     while current_chance < total_chances:
         guessed_word = input().strip().upper()
         while guessed_word not in words:
-            print("[INVALID]\n")
+            print(Fore.RED, "[INVALID]\n")
+            print(Style.RESET_ALL, end = '')
             guessed_word = input().strip().upper()
 
         check_word(guessed_word, chosen_word)
@@ -86,10 +93,21 @@ def main():
 
     print(chosen_word)
 
+    if current_chance >= total_chances:
+        data["current_streak"] = 0
+        with open("C:/Users/Kavin/jarvis/wordle/stats.json", "w") as json_file:
+            json.dump(data, json_file)
+            json_file.close()
+
+    display_stats(data)
+
 
 # ---------------------------- initializing the game ----------------------------------- #
 
 if __name__ == "__main__":
+    print(chosen_word)
+    print(data)
+    print(data['current_streak'])
     main()
 
 # ------------------------------------------------------------------------------------- #
