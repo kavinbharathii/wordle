@@ -23,7 +23,7 @@ git clone https://github.com/cipherDOT/wordle
 $ wordle
 ```
 
-![](https://github.com/cipherDOT/wordle/blob/main/assets/wordle_demo.png)
+![](https://github.com/cipherDOT/wordle/blob/main/assets/wordledemo.png)
 
 ## Community
 Requests from the community to add legible 5-letter words which are NOT already present in "words.txt" file, are always welcome. 
