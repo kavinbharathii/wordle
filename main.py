@@ -37,7 +37,7 @@ def display_stats(data_):
             print(Fore.CYAN, f"attempt {int(key) + 1}      : {'/' * value}")
         else:
             # len of the longest string is 'current_streak' is 14 chars.
-            #  So to make the spaces of all stats even, we subtract the 
+            # So to make the spaces of all stats even, we subtract the 
             # number of chars in the key to calculate the amount of spaces required.
             print(Fore.CYAN, f"{key}{' ' * (14 - len(key))} : {value}")
 
