@@ -1,36 +1,54 @@
-# FUCK IT, a wordle clone it is. Yes I know, completely original. But I am bored, so deal with it.
 
-
-# TODO:
-# [ ] lookup of around 3000 words
-# [ ] all functionalities of Wordle.com
-# [ ] STRICTLY A TERMINAL APPLICATION
-
+# -------------------------------- required packages ------------------------------------ #
 from random import choice
 from colorama import init
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
+import json
 init()
 
+# -------------------------------- global variables ------------------------------------ #
+
 words = []
-alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-alphabets = [letter for letter in alphabets]
-
-with open("[path to words.txt]", "r") as f:
-    for line in f.readlines():
-        words.append(line.strip().upper())
-
-print("Welcome to wordle, guess a 5 letter word")
-chosen_word = str(choice(words))
+alphabets = [letter for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 current_chance = 0
 total_chances = 6
 guessed_crct = False
+
+# --------------------------------- file handling -------------------------------------- #
+
+with open("C:/Users/Kavin/jarvis/wordle/words.txt", "r") as f:
+    for line in f.readlines():
+        words.append(line.strip().upper())
+
+with open("C:/Users/Kavin/jarvis/wordle/stats.json", "r") as json_file:
+    data = json.load(json_file)
+    json_file.close()
+
+# ------------------------------- choosing a word -------------------------------------- #
+
+chosen_word = str(choice(words))
+
+# ------------------------------ display statistics ------------------------------------ #
+
+def display_stats(data_):
+    print(Fore.CYAN, '---------- [STATS] ----------')
+    for key, value in data_.items():
+        print(Fore.CYAN, f"attempt {int(key) + 1} : {'/' * value}")
+
+# ------------------------------ compare two words ------------------------------------ #
 
 def check_word(guess, word):
     global guessed_crct
     if guess == word:
         print(Fore.GREEN, word)
-        print("noice\n")
+        print()
+        print("[NOICE]\n")
         guessed_crct = True
+        data[str(current_chance)] += 1
+        with open("C:/Users/Kavin/jarvis/wordle/stats.json", "w") as json_file:
+            json.dump(data, json_file)
+            json_file.close()
+        display_stats(data)
         quit()
 
     else:
@@ -52,13 +70,14 @@ def check_word(guess, word):
         print(alphabets)
         print()
 
+# ------------------------------- main game func -------------------------------------- #
 
 def main():
     global current_chance, total_chances, guessed_crct
     while current_chance < total_chances:
-        guessed_word = guessed_word = input().strip().upper()
+        guessed_word = input().strip().upper()
         while guessed_word not in words:
-            print("Invalid\n")
+            print("[INVALID]\n")
             guessed_word = input().strip().upper()
 
         check_word(guessed_word, chosen_word)
@@ -66,5 +85,9 @@ def main():
 
     print(chosen_word)
 
+
+# ---------------------------- initializing the game ----------------------------------- #
+
 if __name__ == "__main__":
+    print("Welcome to wordle, guess a 5 letter word")
     main()
