@@ -1,4 +1,4 @@
-# Introduction
+# WORDLE
 A wordle clone that runs in the terminal for people who can't stop playing the game!
 It also has built-in statistics so you can track your progress. 
 
