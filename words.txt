@@ -2014,6 +2014,7 @@ punch
 pupil
 puppy
 purse
+pussy
 queen
 query
 quest
@@ -2434,6 +2435,7 @@ volts
 voted
 voter
 votes
+vowel
 wages
 wagon
 waist
