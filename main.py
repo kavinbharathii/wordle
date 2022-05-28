@@ -16,11 +16,11 @@ guessed_crct = False
 
 # --------------------------------- file handling -------------------------------------- #
 
-with open("C:/Users/Kavin/jarvis/wordle/words.txt", "r") as f:
+with open("./words.txt", "r") as f:
     for line in f.readlines():
         words.append(line.strip().upper())
 
-with open("C:/Users/Kavin/jarvis/wordle/stats.json", "r") as json_file:
+with open("./stats.json", "r") as json_file:
     data = json.load(json_file)
     json_file.close()
 
@@ -53,7 +53,7 @@ def check_word(guess, word):
         data[str(current_chance)] += 1
         data['current_streak'] += 1
         data['max_streak'] = max(data['current_streak'], data['max_streak'])
-        with open("C:/Users/Kavin/jarvis/wordle/stats.json", "w") as json_file:
+        with open("./stats.json", "w") as json_file:
             json.dump(data, json_file)
             json_file.close()
         display_stats(data)
@@ -97,7 +97,7 @@ def main():
 
     if current_chance >= total_chances:
         data["current_streak"] = 0
-        with open("C:/Users/Kavin/jarvis/wordle/stats.json", "w") as json_file:
+        with open("./stats.json", "w") as json_file:
             json.dump(data, json_file)
             json_file.close()
 
