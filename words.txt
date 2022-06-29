@@ -1610,6 +1610,7 @@ gamma
 gases
 gates
 gauge
+gawky
 gears
 gecko
 genes
